@@ -1,0 +1,8 @@
+
+export interface Province {
+    id: number;
+    name: string;
+    imageURL:string
+  }
+ 
+  
