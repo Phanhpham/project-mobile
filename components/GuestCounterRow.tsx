@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
       borderBottomColor: '#f3f4f6',
     },
     title: {
-      fontSize: 18, // text-lg
+      fontSize: 18, 
       fontWeight: '500', // font-medium
       color: '#111827',
     },
