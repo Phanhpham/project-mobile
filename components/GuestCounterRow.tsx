@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     title: {
       fontSize: 18, // text-lg
       fontWeight: '500', // font-medium
-      color: '#111827', // gray-900
+      color: '#111827',
     },
     subtitle: {
       fontSize: 14, // text-sm
