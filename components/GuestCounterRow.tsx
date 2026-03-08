@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
       color: '#111827',
     },
     subtitle: {
-      fontSize: 14, // text-sm
+      fontSize: 14, 
       color: '#6b7280', 
     },
     counterContainer: {
