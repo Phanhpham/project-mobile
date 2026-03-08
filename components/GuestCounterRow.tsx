@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     },
     subtitle: {
       fontSize: 14, // text-sm
-      color: '#6b7280', // gray-500
+      color: '#6b7280', 
     },
     counterContainer: {
       flexDirection: 'row',
