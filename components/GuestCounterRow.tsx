@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       paddingVertical: 16, // py-4
       borderBottomWidth: 1,
-      borderBottomColor: '#f3f4f6', // gray-100
+      borderBottomColor: '#f3f4f6',
     },
     title: {
       fontSize: 18, // text-lg
