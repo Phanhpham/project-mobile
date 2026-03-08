@@ -1,0 +1,41 @@
+name: CI/CD React Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Login DockerHub
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+    - name: Build Docker Image
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/react-app:latest .
+
+    - name: Push Docker Image
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/react-app:latest
+
+    - name: Connect Tailscale
+      uses: tailscale/github-action@v2
+      with:
+        authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+
+    - name: Deploy Server
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: phanh
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          docker pull ${{ secrets.DOCKER_USERNAME }}/react-app:latest
+          docker stop react-app || true
+          docker rm react-app || true
+          docker run -d -p 3000:80 --name react-app ${{ secrets.DOCKER_USERNAME }}/react-app:latest
